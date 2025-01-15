@@ -1,0 +1,72 @@
+query GetProducts(
+  $offset: Int, 
+  $limit: Int, 
+  $category: String, 
+  $brand: String
+  ){
+  getProducts(
+    offset: $offset, 
+    limit: $limit, 
+    category: $category, 
+    brand: $brand
+    ){
+    id
+    name
+    description
+    price
+    category
+    brand
+    features
+    createdAt
+    updatedAt
+  }
+}
+
+query GetRecommendations(
+  $limit: Int,
+  $userId: ID!) {
+  getRecommendations(
+    limit: $limit,
+    userId: $userId
+    ) {
+    product {
+      id
+      name
+      description
+      price
+      category
+      brand
+      features
+      createdAt
+      updatedAt
+    }
+    score
+  }
+}
+
+mutation CreateInteraction(
+  $userId: ID!, 
+  $productId: ID!, 
+  $type: String!
+  ) {
+  createInteraction(
+    userId: $userId, 
+    productId: $productId, 
+    type: $type
+    ) {
+    id
+    userId
+    productId
+    type
+    createdAt
+  }
+}
+
+mutation CreateUser($email: String!) {
+  createUser(email: $email) {
+    id
+    email
+    createdAt
+    updatedAt
+  }
+}
