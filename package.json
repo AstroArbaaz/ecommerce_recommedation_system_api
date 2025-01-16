@@ -7,8 +7,10 @@
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts ",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy",
-    "populate-db": "npx ts-node src/populateDatabase.ts"
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio",
+    "prisma:deploy": "prisma migrate deploy",
+    "seed": "npx ts-node src/populateDatabase.ts"
   },
   "repository": {
     "type": "git",
